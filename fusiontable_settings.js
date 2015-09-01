@@ -30,7 +30,7 @@ var MapsLib = MapsLib || {}; MapsLib.schemaVersion = 2;
     // See https://developers.google.com/fusiontables/docs/v1/migration_guide for more info
 
     // The encrypted Table ID of your Fusion Table (found under File => About)
-    MapsLib.fusionTableId = "13xmU6wANRJb0Niqcdz5Tr0xWh4AyV0yN10xMxPc";
+    MapsLib.fusionTableId = "1-IaJm0i27Ivf-wxJ5gQ5WQ5-TDrjjJXze0QeDLr-";
 
     // *New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
     // *Important* this key is for demonstration purposes. please register your own.
@@ -141,6 +141,32 @@ $.extend(MapsLib, {
         ],
     },
 */
+
+    searchPage: { 
+        allColumns: false,
+        distanceFilter: { 
+            entries: [ 
+                ["Überall", "0", true], 
+                ["1km", "1000 meters"], 
+                ["5km", "5000 meters"], 
+                ["20km", "20000 meters"], 
+                ["50km", "50000 meters"], 
+                ["100km"], ["100000 meters"] 
+                ]
+        },
+        columns: [ 
+            { label: "Rating Filter", type: "dropdown", entries: [
+                ["Any Rating", "'last_score' > 0", true],
+                ["Good", "'last_score' > 90"],
+                ["Adequate", "'last_score' > 85 AND 'last_score' <= 90"],
+                ["Needs Improvement", "'last_score' > 70 AND 'last_score' <= 85"],
+                ["Poor", "'last_score' <= 70 AND 'last_score' > 0"]
+            ] },
+            { label: "Name", type: "text", column: "Name"},
+            { label: "Chemische Qualität", type: "text", column: "Chemische Qualität"},
+        ],
+    },
+
 
 
     ///////////////////////
